@@ -1,21 +1,3 @@
 <h2>Login Form</h2>
 
-<form action="<%= session_url %>" method="post">
-  
-  <label>
-    Email:
-    <input type="text" name="user[email]" value="">
-  </label>
-  <br><br>
-  
-  <label>
-    Password:
-    <input type="text" name="user[password]" value="">
-  </label>
-  <br><br>
-  
-  <input type="submit" value="Login">
-  
-  <p><%= flash.now[:session] %></p>
-  
-</form>
+<%= render 'shared/user_form', type: :login %>

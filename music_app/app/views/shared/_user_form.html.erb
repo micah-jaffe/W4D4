@@ -1,0 +1,29 @@
+<% if type == :signup %>
+  <% action_url = users_url %>
+  <% button_text = "Create Account" %>
+  <% render_param = :user %>
+<% elsif type == :login %>
+  <% action_url = session_url %>
+  <% button_text = "Login" %>
+  <% render_param = :session %>
+<% end %>
+
+<form action="<%= action_url %>" method="post">
+  
+  <label>
+    Email:
+    <input type="text" name="user[email]" value="">
+  </label>
+  <br><br>
+  
+  <label>
+    Password:
+    <input type="text" name="user[password]" value="">
+  </label>
+  <br><br>
+  
+  <input type="submit" value="<%= button_text %>">
+  
+  <p><%= flash.now[render_param] %></p>
+  
+</form>
