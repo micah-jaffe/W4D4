@@ -10,14 +10,17 @@ class SessionsController < ApplicationController
     )
     
     if user.nil?
-      flash.now[:session] = "Could not find account"
+      flash.now[:session] = "Invalid credentials"
       render :new
     else
       login!(user)
+      flash[:session] = "Welcome back!"
       redirect_to user_url(user)
     end
   end
   
   def destroy
+    logout!
+    redirect_to new_session_url
   end
 end

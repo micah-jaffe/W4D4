@@ -10,6 +10,24 @@
   </head>
 
   <body>
+    
+    <header class="container">
+      <%= image_tag("my_logo.png", size: "60x60") %>
+      <h1>Music App</h1>
+      
+      <nav>
+        
+      <% if logged_in? %>
+        <%= button_to "Logout", session_url, method: "delete"  %>
+      <% else %>
+        <%= link_to "Login", new_session_url %>
+        <%= link_to "Sign up", new_user_url %>
+      <% end %>
+      
+      </nav>
+      
+    </header>
+    
     <%= yield %>
   </body>
 </html>

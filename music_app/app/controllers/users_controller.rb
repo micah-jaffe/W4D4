@@ -8,9 +8,10 @@ class UsersController < ApplicationController
     
     if user.save
       flash[:user] = "Account created!"
+      login!(user)
       redirect_to user_url(user)
     else
-      flash.now[:user] = "Invalid credentials"
+      flash.now[:user] = "Invalid username or password"
       render :new
     end
   end
@@ -23,9 +24,6 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(
-      email: params[:user][:email],
-      password: params[:user][:password]
-    )
+    params.require(:user).permit(:email, :password)
   end
 end
