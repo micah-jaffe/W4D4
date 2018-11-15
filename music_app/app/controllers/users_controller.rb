@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_logged_in, only: [:show]
+  
   def new
     render :new
   end
