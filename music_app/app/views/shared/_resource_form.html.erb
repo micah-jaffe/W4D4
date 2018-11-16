@@ -1,0 +1,28 @@
+<% case resource %>
+<% when Band %>
+  <% case action %>
+  <% when :new %> 
+    <% action_url = bands_url %>
+    <% button_text = "Create!" %>
+    <% verb = "post" %>
+  <% when :edit %>  
+    <% action_url = band_url %>
+    <% button_text = "Update" %>
+    <% verb = "patch" %>
+  <% end %>
+<% end %>
+
+<form action="<%= action_url %>" method="post">
+  <input type="hidden" name="_method" value="<%= verb %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  
+  <label>
+    <%= resource %> name:
+    <input type="text" name="band[name]" value="<%= resource ? resource.name : "" %>">
+  </label>
+  
+  <br>
+  <input type="submit" value="<%= button_text %>"
+  
+  <p><%= flash.now[resource.to_s.downcase.to_sym] %></p>
+</form>

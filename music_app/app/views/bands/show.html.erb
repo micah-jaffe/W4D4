@@ -1,0 +1,6 @@
+<h2> <%= @band.name %> </h2>
+
+<p>This band has no info :(</p>
+
+<%= link_to "Update info", edit_band_url %>
+<%= button_to "Delete this shitty band", band_url, method: "delete" %>
